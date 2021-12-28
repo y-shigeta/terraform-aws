@@ -54,7 +54,6 @@ aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-c
   - [Ubuntsu AMI](https://cloud-images.ubuntu.com/locator/ec2/)
 
 ## Usage
-- AWS preparation
   1. aws configure to set up AWS Configure with AccessKey and Secret Key
   2. Confirm AWS connectivity
     - aws sts get-caller-identity
@@ -63,8 +62,6 @@ aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-c
   5. terraform apply
   6. login with key pair
   - ssh -i "/Users/yas/Credential/ec2-linux-keypair.pem" ec2-user@ec2-54-183-53-250.us-west-1.compute.amazonaws.com
-
-- GCP preparation
 
 ## Cleanup
 
