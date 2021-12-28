@@ -1,0 +1,7 @@
+/_temp
+/.terraform
+/*/.terraform
+/*/*/.terraform
+*.tfstate
+*.backup
+*.tf_
