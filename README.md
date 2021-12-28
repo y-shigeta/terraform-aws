@@ -42,16 +42,11 @@ terraform workspace prd
 terraform workspace select dev
 terraform workspace list
 
+### Set up CICD Pipeline
 - CICD pipeline
 1. get github token
 2. store github token into SSM parameter
 aws ssm put-parameter --type SecureString --name /continuous_apply/github_token --value <yourgithubtoken>
-
-
-- Search AMI ID for OS
-aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-code,Values=aw0evgkw8e5c1q413zgy5pjce"       --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Description]"       --output text &
-  - [CentOS AMI](https://wiki.centos.org/Cloud/AWS)
-  - [Ubuntsu AMI](https://cloud-images.ubuntu.com/locator/ec2/)
 
 ## Usage
   1. aws configure to set up AWS Configure with AccessKey and Secret Key
@@ -62,6 +57,11 @@ aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-c
   5. terraform apply
   6. login with key pair
   - ssh -i "/Users/yas/Credential/ec2-linux-keypair.pem" ec2-user@ec2-54-183-53-250.us-west-1.compute.amazonaws.com
+
+- Search AMI ID for OS
+aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-code,Values=aw0evgkw8e5c1q413zgy5pjce"       --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Description]"       --output text &
+  - [CentOS AMI](https://wiki.centos.org/Cloud/AWS)
+  - [Ubuntsu AMI](https://cloud-images.ubuntu.com/locator/ec2/)
 
 ## Cleanup
 
