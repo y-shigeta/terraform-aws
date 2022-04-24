@@ -16,13 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-<<<<<<< HEAD
 #      - uses: actions/checkout@v2     
-=======
-
-#      - uses: actions/checkout@v2
-      
->>>>>>> 0cb28c3fd853359669e9864f11f8cbed0b901c8c
       - name: Set env vars for prod
 #        if: github.ref == 'refs/heads/main'
         run: |
