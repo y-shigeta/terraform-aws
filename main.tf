@@ -6,17 +6,15 @@ provider "aws" {
   profile = "default"
 }
 
-/*
 module "web_server" {
   source        = "./http_server"
   instance_type = "t3.micro"
 }
+/*
 
 output "public_dns" {
   value = module.web_server.public_dns
 }
-
-
 
 module "iam_role_for_ec2" {
   source     = "./modules/iam_role"
@@ -31,6 +29,7 @@ module "s3" {
 }
 */
 
+/*
 module "nw" {
 #  alb_log_bucket = module.s3.alb_log
   source                      = "./modules/nw"
@@ -42,6 +41,17 @@ module "nw" {
   private_subnet_0_cidr_block = var.private_subnet_0_cidr_block
   private_subnet_1_cidr_block = var.private_subnet_1_cidr_block
 }
+*/
+/*
+module "asg" {
+  source = "./modules/asg"
+}
+*/
+/*
+module "dynamodb" {
+  source = "./modules/dynamodb"
+}
+*/
 
 #module "elb" {
 #  source                      = "./modules/elb"

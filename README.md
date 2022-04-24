@@ -42,6 +42,7 @@ terraform workspace prd
 terraform workspace select dev
 terraform workspace list
 
+
 ### Set up CICD Pipeline
 - CICD pipeline
 1. get github token
@@ -49,7 +50,7 @@ terraform workspace list
 aws ssm put-parameter --type SecureString --name /continuous_apply/github_token --value <yourgithubtoken>
 
 ## Usage
-  1. aws configure to set up AWS Configure with AccessKey and Secret Key
+  1. aws configure --profile to set up AWS Configure with AccessKey and Secret Key
   2. Confirm AWS connectivity
     - aws sts get-caller-identity
   3. terraform init
@@ -63,7 +64,18 @@ aws ec2 describe-images --owners aws-marketplace       --filters "Name=product-c
   - [CentOS AMI](https://wiki.centos.org/Cloud/AWS)
   - [Ubuntsu AMI](https://cloud-images.ubuntu.com/locator/ec2/)
 
-## Cleanup
+## Migration
+1. Prepare s3 bucket for tfstate
+aws s3 mb s3://wasabi-terraform-tfstate --region ap-northeast-1 
+aws s3api put-bucket-policy --bucket s3://wasabi-terraform-tfstates --policy file://s3-tfstate-policy.json
+
+- Migrate local tfstate file to s3 
+terraform init -migrate-state
+
+## Switch to Company AWS account
+aws configure --profile dirbato-wasabi
+export AWS_PROFILE=dirbato-wasabi
+aws configure list
 
 ## Licence
 
